@@ -21,6 +21,8 @@ func main() {
 		fmt.Println("You can play the game")
 	} else {
 		fmt.Println("You can't play the game")
+		return
 	}
 
+	fmt.Println("Lets start the game")
 }
