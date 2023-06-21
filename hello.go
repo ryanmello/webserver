@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+func anotherFunction(num string){
+	fmt.Println(num)
+}
+
 func main() {
-	fmt.Println("Hello World")
+	anotherFunction("15")
+	fmt.Println("Hello")
 }
