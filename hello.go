@@ -25,4 +25,6 @@ func main() {
 	}
 
 	fmt.Println("Lets start the game")
+
+	fmt.Println("Today I went in the ocean")
 }
