@@ -1,30 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
 
 func main() {
-	fmt.Println("Welcome to my game")
+	fileServer := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fileServer)
+	http.HandleFunc("/form", formHandler)
+	http.HandleFunc("/hello", helloHandler)
 
-	fmt.Printf("Enter your name: ")
-	var name string
-	fmt.Scan(&name)
-	fmt.Printf("Hello %v \n", name)
-
-	fmt.Printf("Enter your age: ")
-	var age uint
-	fmt.Scan(&age)
-	fmt.Printf("You are %v years old \n", age)
-
-	fmt.Println(age >= 10)
-
-	if age >= 10 {
-		fmt.Println("You can play the game")
-	} else {
-		fmt.Println("You can't play the game")
-		return
+	fmt.Printf("starting server at port 8080 \n")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatal(err)
 	}
-
-	fmt.Println("Lets start the game")
-
-	fmt.Println("Today is my birthday")
 }
